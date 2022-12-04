@@ -8,7 +8,7 @@ def solve_part_1(in_d):
 
 
 def solve_part_2(in_d):
-    return sum(not (x1 > y2 or x2 < y1) or not (y1 > x2 or y2 < x1) for x1, x2, y1, y2 in in_d)
+    return sum(x1 <= y2 and x2 >= y1 for x1, x2, y1, y2 in in_d)
 
 
 def main():
