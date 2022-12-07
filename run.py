@@ -1,6 +1,7 @@
 import sys
 import time
 import subprocess
+from datetime import date
 
 
 def run_day(d, in_f='in.txt'):
@@ -22,8 +23,13 @@ def print_result(d, result, t):
 
 def main():
     if len(sys.argv) == 2:
-        d = int(sys.argv[1])
-        result, t = run_day('0' * (d < 10) + str(d))
+        if sys.argv[1].isnumeric():
+            d = int(sys.argv[1])
+            result, t = run_day('0' * (d < 10) + str(d))
+        else:
+            d = int(date.today().strftime('%d'))
+            in_f = sys.argv[1]
+            result, t = run_day('0' * (d < 10) + str(d), in_f)
         print_result(d, result, t)
         return
     elif len(sys.argv) == 3:
